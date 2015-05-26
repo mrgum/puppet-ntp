@@ -18,6 +18,21 @@ class ntp::params {
         'default nomodify nopeer',
       ]
     }
+    /^Debian/: {
+      $package_name = 'ntp'
+      $service_name = 'ntp'
+      $config_file = '/etc/ntp.conf'
+      $template = "${module_name}/ntp.conf-debian.erb"
+      $server = [
+        '0.pool.ntp.org',
+        '1.pool.ntp.org',
+        '2.pool.ntp.org',
+        '3.pool.ntp.org',
+      ]
+      $restrict = [
+        'default nomodify nopeer',
+      ]
+    }
     'RedHat-7': {
       $package_name = 'chrony'
       $service_name = 'chronyd'
